@@ -41,7 +41,7 @@ pipeline{
 			steps {
 
 				//sh 'docker run --name effulgencetech-node-cont-$BUILD_NUMBER -p 8082:8080 -d michaelgwei86/effulgencetech-nodejs-image:$BUILD_NUMBER'
-				sh 'docker run --name $CONTAINER_NAME-$BUILD_NUMBER -p 8082:8081 -d $IMAGE_REPO_NAME:$BUILD_NUMBER'
+				sh 'docker run --name $CONTAINER_NAME-$BUILD_NUMBER -p 9000:8080 -d $IMAGE_REPO_NAME:$BUILD_NUMBER'
 				sh 'docker ps'
 			}
 		}
@@ -63,5 +63,5 @@ pipeline{
             slackSend channel: '#effulgencetech-devops-channel', color: COLOR_MAP[currentBuild.currentResult], message: "*${currentBuild.currentResult}:*, Job ${env.JOB_NAME} build ${env.BUILD_NUMBER} \n More info at: ${env.BUILD_URL}"
         }
     }
-
+v
 }
